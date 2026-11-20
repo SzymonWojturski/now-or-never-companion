@@ -22,6 +22,16 @@ A [standalone calculator](https://szymonwojturski.github.io/now-or-never-calcula
 
 ## MVP scope
 
-- [ ] Game state input
-- [ ] Local MCP server with knapsack solver and trade evaluation tools
-- [ ] Vibration on each tool call
+- [x] Game state input (GUI, tab "Torba")
+- [x] Local MCP server with knapsack solver and trade evaluation tools
+- [x] Vibration on each tool call (`expo-haptics`)
+
+## Running
+
+```
+cp .env.example .env     # set EXPO_PUBLIC_LLM_API_KEY (Groq by default)
+npm install --legacy-peer-deps
+npx expo start --web     # or --android
+```
+
+The solver is [YALPS](https://github.com/Ivordir/YALPS) (pure JS) instead of the calculator's HiGHS, because Hermes has no WebAssembly. `EXPO_PUBLIC_*` values are inlined into the app bundle, so do not ship a private key this way.
